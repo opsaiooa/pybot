@@ -177,15 +177,15 @@ helpMessage ="""╔════════════════════
 ╠═══════════════════
 ║ SILENT TΣΔM βΩT
 ╠═══════════════════
-╠⍟➣line://ti/p/~teambotprotect
-╠⍟➣line://ti/p/~dhenz415
+╠⍟➣line://ti/p/粽子
+╠⍟➣line://ti/p/粽子
 ╚═══════════════════
 """
 
 sid = []
 wait = {
     "spamr":False,
-    "Invite":True,
+    "Invite":False,
     "ainvite":False,
     "atarget":False,
     "dtarget":False,
@@ -196,7 +196,7 @@ wait = {
     "santet":True,
     "Autojoin":False,
     "Timeline":False,
-    "LikeOn":True,
+    "LikeOn":False,
     "getmid":False,
     "mimic":False,
     }
@@ -698,6 +698,9 @@ def dhenzaBot(op):
                     
             elif msg.text in ["Me"]:
             	dz.sendMessage(receiver, None, contentMetadata={'mid': dzMID}, contentType=13)
+		
+            elif msg.text in ["我"]:
+            	dz.sendMessage(receiver, None, contentMetadata={'mid': dzMID}, contentType=13)
             
             elif msg.text in ["Ginfo"]:
                 if msg.toType == 2:
@@ -729,7 +732,26 @@ def dhenzaBot(op):
                 dz.sendContact(msg.to,GS)            
                 dz.sendMessage(msg.to,"Sijones ini ɴᴏʜ ʏɢ ʙɪᴋɪɴ ɢʀᴜᴘ....")
                 
+            elif msg.text in ["開群者"]:
+              if msg.toType == 2:
+                group = dz.getGroup(msg.to)
+                GS = group.creator.mid
+                dz.sendContact(msg.to,GS)            
+                dz.sendMessage(msg.to,"Sijones ini ɴᴏʜ ʏɢ ʙɪᴋɪɴ ɢʀᴜᴘ....")
+                
             elif msg.text in ["Gurl"]:
+                if msg.toType == 2:
+                    x = dz.getGroup(msg.to)
+                    if x.preventedJoinByTicket == True:
+                        dz.sendMessage(msg.to,"ǫʀ ɴʏᴀ ᴅɪ ᴀɴᴜ ᴅᴜʟᴜ ʙᴏss..")
+                    elif x.preventedJoinByTicket == False:
+                        dz.updateGroup(x)
+                        gurl = dz.reissueGroupTicket(msg.to)
+                        dz.sendMessage(msg.to,"http://line.me/R/ti/g/" + gurl)
+                    else:
+                        pass
+                        
+            elif msg.text in ["群網址"]:
                 if msg.toType == 2:
                     x = dz.getGroup(msg.to)
                     if x.preventedJoinByTicket == True:
