@@ -839,8 +839,21 @@ def dhenzaBot(op):
                     dz.sendImageWithURL(receiver, images)
                 except Exception as e:
                     dz.sendMessage(receiver, str(e))
-            elif "Yt: " in msg.text:
-                query = msg.text.replace("Yt: ","")
+            elif "Yt:" in msg.text:
+                query = msg.text.replace("Yt:","")
+                with requests.session() as s:
+                    s.headers['user-agent'] = "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"
+                    url = 'http://www.youtube.com/results'
+                    params = {'search_query': query}
+                    r = s.get(url, params=params)
+                    soup = BeautifulSoup(r.content, 'html5lib')
+                    hasil = ""
+                    for a in soup.select('.yt-lockup-title > a[title]'):
+                        if '&list=' not in a['href']:
+                            hasil += ''.join((a['title'],'\nhttp://www.youtube.com' + a['href'],'\n\n'))
+                    dz.sendMessage(msg.to,hasil)
+            elif "影音:" in msg.text:
+                query = msg.text.replace("影音:","")
                 with requests.session() as s:
                     s.headers['user-agent'] = "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"
                     url = 'http://www.youtube.com/results'
@@ -1130,6 +1143,16 @@ def dhenzaBot(op):
                             dz.kickoutFromGroup(msg.to, [mention['M']])							
                         except:
                             dz.sendMessage(msg.to, "ʟɪᴍɪᴛ ʙᴏss..")
+            elif "踢 @" in msg.text:
+                if 'MENTION' in msg.contentMetadata.keys() != None:
+                    names = re.findall(r'@(\w+)', msg.text)
+                    mention = ast.literal_eval(msg.contentMetadata['MENTION'])
+                    mentionees = mention['MENTIONEES']
+                    for mention in mentionees:
+                        try:
+                            dz.kickoutFromGroup(msg.to, [mention['M']])							
+                        except:
+                            dz.sendMessage(msg.to, "ʟɪᴍɪᴛ ʙᴏss..")
 #=================================================
             elif msg.text in ["Salam"]:
                 dz.sendMessage(msg.to,"السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ")
@@ -1156,6 +1179,15 @@ def dhenzaBot(op):
                     with open('pro.json', 'w') as fp:
                         json.dump(pro, fp, sort_keys=True, indent=4)
                     dz.sendMessage(msg.to,"ᴀʟʟ ᴘʀᴏᴛᴇᴄᴛɪᴏɴ ᴏɴ")
+            elif msg.text in ["全保護開"]:
+                    pro["Protectgr"][msg.to] = True
+                    pro["Protectjoin"][msg.to] = True
+                    pro["Protectcancl"][msg.to] = True
+                    pro["Protectinvite"][msg.to] = True
+                    pro["Autokick"][msg.to] = True
+                    with open('pro.json', 'w') as fp:
+                        json.dump(pro, fp, sort_keys=True, indent=4)
+                    dz.sendMessage(msg.to,"禁開網址\n禁止進群\n禁止取消\n禁止邀請\n禁止踢人")
             elif msg.text in ["All protect off"]:
                 if msg.to in pro["Protectgr"]:
                     try:
@@ -1185,6 +1217,35 @@ def dhenzaBot(op):
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴀʟʟ ᴘʀᴏᴛᴇᴄᴛɪᴏɴ ᴏғғ")
+            elif msg.text in ["全保護關"]:
+                if msg.to in pro["Protectgr"]:
+                    try:
+                        del pro["Protectgr"][msg.to]
+                    except:
+                        pass
+                if msg.to in pro["Protectcancl"]:
+                    try:
+                        del pro["Protectcancl"][msg.to]
+                    except:
+                        pass
+                if msg.to in pro["Protectinvite"]:
+                    try:
+                        del pro["Protectinvite"][msg.to]
+                    except:
+                        pass
+                if msg.to in pro["Protectjoin"]:
+                    try:
+                        del pro["Protectjoin"][msg.to]
+                    except:
+                        pass
+                if msg.to in pro["Autokick"]:
+                    try:
+                        del pro["Autokick"][msg.to]
+                    except:
+                        pass
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"網址解禁\n進群解禁\n取消解禁\n邀請解禁\n踢人解禁")
             elif "All protect on grup: " in msg.text:
                 ng = msg.text.replace("All protect on grup: ","")
                 gid = yd.getGroupIdsJoined()
@@ -1241,11 +1302,21 @@ def dhenzaBot(op):
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ɪɴᴠɪᴛᴇ ᴏɴ ᴘʀᴏᴛᴇᴄᴛ")
+            elif msg.text in ["鎖邀請"]:
+                pro["Protectinvite"][msg.to]=True
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"禁止邀請")
             elif msg.text in ["Unlock invite"]:
                 del pro["Protectinvite"][msg.to]
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ɪɴᴠɪᴛᴇ ᴜɴᴘʀᴏᴛᴇᴄᴛ")
+            elif msg.text in ["解鎖邀請"]:
+                del pro["Protectinvite"][msg.to]
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"允許邀請")
             elif "Unlock invite grup: " in msg.text:
                 ng = msg.text.replace("Unlock invite grup: ","")
                 gid = dz.getGroupIdsJoined()
@@ -1281,11 +1352,21 @@ def dhenzaBot(op):
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴄᴀɴᴄᴇʟ ᴏɴ ᴘʀᴏᴛᴇᴄᴛ")
+            elif msg.text in ["禁止取消"]:
+                pro["Protectcancl"][msg.to]=True
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"待邀區保護啟動")
             elif msg.text in ["Unlock cancel"]:
                 del pro["Protectcancl"][msg.to]
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴄᴀɴᴄᴇʟ ᴜɴᴘʀᴏᴛᴇᴄᴛ")
+            elif msg.text in ["取消解禁"]:
+                del pro["Protectcancl"][msg.to]
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"待邀區保護關閉")
             elif "Unlock cancel grup: " in msg.text:
                 ng = msg.text.replace("Unlock cancel grup: ","")
                 gid = dz.getGroupIdsJoined()
@@ -1341,11 +1422,21 @@ def dhenzaBot(op):
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴊᴏɪɴ ᴏɴ ᴘʀᴏᴛᴇᴄᴛ")
+            elif msg.text in ["鎖進群"]:
+                pro["Protectjoin"][msg.to]=True
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"禁止進入群組")
             elif msg.text in ["Unlock join"]:
                 del pro["Protectjoin"][msg.to]
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴊᴏɪɴ ᴜɴᴘʀᴏᴛᴇᴄᴛ")
+            elif msg.text in ["解鎖進群"]:
+                del pro["Protectjoin"][msg.to]
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"允許進入群組")
             elif "Unlock join grup: " in msg.text:
                 ng = msg.text.replace("Unlock join grup: ","")
                 gid = dz.getGroupIdsJoined()
@@ -1890,11 +1981,21 @@ def dhenzaBot(op):
                 with open('setting.json', 'w') as fp:
                     json.dump(wait, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴀᴜᴛᴏ ᴊᴏɪɴ ᴍᴏᴅᴇ ᴏɴ")
+            elif msg.text in ["自動進群 開"]:
+                wait["Autojoin"]=True
+                with open('setting.json', 'w') as fp:
+                    json.dump(wait, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"自動禁群功能已開啟")
             elif msg.text in ["Autojoin off"]:
                 wait["Autojoin"]=False
                 with open('setting.json', 'w') as fp:
                     json.dump(wait, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴀᴜᴛᴏ ᴊᴏɪɴ ᴍᴏᴅᴇ ᴏғғ")
+            elif msg.text in ["自動進群 關"]:
+                wait["Autojoin"]=False
+                with open('setting.json', 'w') as fp:
+                    json.dump(wait, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"自動禁群功能已關閉")
 #=============================================
             elif msg.text in ["Gift"]:
                     giftnya={'MSGTPL': '5',
