@@ -21,8 +21,8 @@ sudo pip3 install pafy<br>
 sudo pip3 install wikipedia<br>
 sudo pip3 install tweepy<br>
 sudo pip3 install youtube_dl<br>
-git clone https://github.com/dhenza1415/SELFBOT1<br>
-cd SELFBOT1<br>
+git clone https://github.com/opsaiooa/pybot<br>
+cd pybot<br>
 ls<br>
 python selfbotsk.py<br>
 ======================================== <br>
@@ -49,9 +49,9 @@ pip3 install tweepy<br>
 pip3 install pytz<br>
 pip3 install html5lib<br>
 pip3 install pafy<br>
-git clone https://github.com/dhenza1415/SELFBOT1<br>
+git clone https://github.com/opsaiooa/pybot<br>
 ls<br>
-cd SELFBOT1<br>
+cd pybot<br>
 ls<br>
 python3 selfbotsk.py<br>
 
