@@ -177,8 +177,8 @@ helpMessage ="""╔════════════════════
 ╠═══════════════════
 ║ SILENT TΣΔM βΩT
 ╠═══════════════════
-╠⍟➣line://ti/p/粽子
-╠⍟➣line://ti/p/粽子
+╠⍟➣line://ti/p/糉子
+╠⍟➣line://ti/p/糉子
 ╚═══════════════════
 """
 
@@ -226,8 +226,8 @@ pro = {
 Dhenza = {
     "comment":"╔═════════════════════\nAuto like by:TBP\n╚══════════════════════",
     "cctvteks":"Masuk sayang\nUdah keciduk juga",
-    "message":"Cieee kepo @!\n╔═════════════════════\nᵀᴴᴬᴺᴷˢ ᶠᴼᴿ ᴬᴰᴰ ᴹᴱ\n╚══════════════════════",
-    "welmsg":"╔═════════════════════\nSILENT TΣΔM βΩT\n╚══════════════════════",
+    "message":"Hi @!\nᵀᴴᴬᴺᴷˢ ᶠᴼᴿ ᴬᴰᴰ ᴹᴱ",
+    "welmsg":"安呀! \n有人進來趕快出來打招呼",
     "leftmsg":"╔═════════════════════\nSILENT TΣΔM βΩT\n╚══════════════════════",
     "tagteks1":"Tag mau minta jajan ya",
     "tagteks2":"iya syang",
@@ -1010,7 +1010,7 @@ def dhenzaBot(op):
                     if hr == day[i]: hasil = hari[i]
                 for k in range(0, len(bulan)):
                     if bln == str(k): bln = bulan[k-1]
-                rst = hasil + ", " + inihari.strftime('%d') + " - " + bln + " - " + inihari.strftime('%Y') + "\nJam : [ " + inihari.strftime('%H:%M:%S') + " ]"
+                rst = hasil + ", " + inihari.strftime('%Y') + " - " + bln + " - " + inihari.strftime('%d') + "\nTime : [ " + inihari.strftime('%H:%M:%S') + " ]"
                 dz.sendMessage(msg.to, rst)
                 
             elif msg.text in ["Runtime"]:
@@ -1020,10 +1020,10 @@ def dhenzaBot(op):
                 dz.sendMessage(msg.to, "ʙᴏᴛ ʀᴜɴ  {}".format(str(runtime)))
                 
             elif msg.text in ["Tanggal"]:
-                    tz = pytz.timezone("Asia/Hong_Kong")
+                    tz = pytz.timezone("Asia/Taipei")
                     timeNow = datetime.now(tz=tz)
                     day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
-                    hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
+                    hari = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
                     bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
                     hr = timeNow.strftime("%A")
                     bln = timeNow.strftime("%m")
@@ -1033,7 +1033,37 @@ def dhenzaBot(op):
                         if bln == str(k): bln = bulan[k-1]
                     readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
                     dz.sendMessage(msg.to, readTime)  
-
+                
+            elif msg.text in ["日曆"]:
+                    tz = pytz.timezone("Asia/Taipei")
+                    timeNow = datetime.now(tz=tz)
+                    day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
+                    hari = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+                    bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+                    hr = timeNow.strftime("%A")
+                    bln = timeNow.strftime("%m")
+                    for i in range(len(day)):
+                        if hr == day[i]: hasil = hari[i]
+                    for k in range(0, len(bulan)):
+                        if bln == str(k): bln = bulan[k-1]
+                    readTime = hasil + ", " + timeNow.strftime('%Y') + " - " + bln + " - " + timeNow.strftime('%d') + "\n時間 : [ " + timeNow.strftime('%H:%M:%S') + " ]"
+                    dz.sendMessage(msg.to, readTime)  
+			                
+            elif msg.text in ["時刻"]:
+                    tz = pytz.timezone("Asia/Tokyo")
+                    timeNow = datetime.now(tz=tz)
+                    day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
+                    hari = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"]
+                    bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+                    hr = timeNow.strftime("%A")
+                    bln = timeNow.strftime("%m")
+                    for i in range(len(day)):
+                        if hr == day[i]: hasil = hari[i]
+                    for k in range(0, len(bulan)):
+                        if bln == str(k): bln = bulan[k-1]
+                    readTime = hasil + ", " + timeNow.strftime('%Y') + " - " + bln + " - " + timeNow.strftime('%d') + "\n時刻 : [ " + timeNow.strftime('%H:%M:%S') + " ]"
+                    dz.sendMessage(msg.to, readTime)  
+			
             elif "/spam " in msg.text:
                 txt = msg.text.split(" ")
                 jmlh = int(txt[1])
@@ -1667,8 +1697,8 @@ def dhenzaBot(op):
                 if msg.to in pro["Protectinvite"]: md+="╠➣ᴘʀᴏᴛᴇᴄᴛ ɪɴᴠ : ✔\n"
                 else: md+= "╠➣ᴘʀᴏᴛᴇᴄᴛ ɪɴᴠ : ❌\n"
 				
-                if msg.to in pro["Autokick"]: md+="╠➣ᴀᴜᴛᴏ ᴋɪᴄᴋ : ✔\n╠════════════════════\n╠➣line://ti/p/~dhenz415\n╠➣line://ti/p/~tambotprotect\n╚════════════════════"
-                else:md+="╠➣ᴀᴜᴛᴏ ᴋɪᴄᴋ : ❌\n╠════════════════════\n╠➣line://ti/p/~dhenz415\n╠➣line://ti/p/~teambotprotect\n╚════════════════════"
+                if msg.to in pro["Autokick"]: md+="╠➣ᴀᴜᴛᴏ ᴋɪᴄᴋ : ✔\n╠════════════════════\n╠➣line://ti/p/糉子\n╠➣line://ti/p/糉子\n╚════════════════════"
+                else:md+="╠➣ᴀᴜᴛᴏ ᴋɪᴄᴋ : ❌\n╠════════════════════\n╠➣line://ti/p/糉子\n╠➣line://ti/p/糉子\n╚════════════════════"
 				
                 dz.sendMessage(msg.to,md)
             elif msg.text in ["Add off"]:
@@ -1723,8 +1753,8 @@ def dhenzaBot(op):
                 else:md+="╠➣ɢᴇᴛ ᴘᴏsᴛ : ❌\n"
                 if pro["wellcome"] == True: md+="╠➣ᴡeʟʟᴄᴏᴍᴇ ᴛᴇᴋs : ✔\n"
                 else:md+="╠➣ᴡᴇʟʟᴄᴏᴍᴇ ᴛᴇᴋs : ❌\n"
-                if pro["bymsg"] == True: md+="╠➣ʙʏᴇ ᴍsɢ ᴛᴇᴋs : ✔\n╠════════════════════\n╠➣line://ti/p/~tambotprotect\n╠➣line://ti/p/~dhenz415\n╚════════════════════"
-                else:md+="╠➣ʙʏᴇ ᴍsɢ ᴛᴇᴋs : ❌\n╠════════════════════\n╠➣line://ti/p/~tambotprotect\n╠➣line://ti/p/~tambotprotect\n╚════════════════════"
+                if pro["bymsg"] == True: md+="╠➣ʙʏᴇ ᴍsɢ ᴛᴇᴋs : ✔\n╠════════════════════\n╠➣line://ti/p/糉子\n╠➣line://ti/p/糉子\n╚════════════════════"
+                else:md+="╠➣ʙʏᴇ ᴍsɢ ᴛᴇᴋs : ❌\n╠════════════════════\n╠➣line://ti/p/糉子\n╠➣line://ti/p/糉子\n╚════════════════════"
                 dz.sendMessage(msg.to,md)
 #=============================================
             elif msg.text in ["Cek ginfo"]:
@@ -1935,9 +1965,15 @@ def dhenzaBot(op):
             elif msg.text in ["Add friend"]:
                     wait["afriend"]=True
                     dz.sendMessage(msg.to, "sᴇɴᴅ ᴄᴏɴᴛᴀᴄᴛ")
+            elif msg.text in ["加好友"]:
+                    wait["afriend"]=True
+                    dz.sendMessage(msg.to, "[請傳送友資]")
             elif msg.text in ["Del friend"]:
                     wait["dfriend"]=True
                     dz.sendMessage(msg.to, "sᴇɴᴅ ᴄᴏɴᴛᴀᴄᴛ")
+            elif msg.text in ["刪好友"]:
+                    wait["dfriend"]=True
+                    dz.sendMessage(msg.to, "[請傳送友資]")
             elif msg.text in ["Friend list"]:
                 if org["Friend"] == {}:
                     try:
@@ -1961,6 +1997,11 @@ def dhenzaBot(op):
                 with open('org.json', 'w') as fp:
                     json.dump(org, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ғʀɪᴇɴᴅ ᴄʟᴇᴀʀ")
+            elif msg.text in ["清除好友"]:
+                org['Friend'] = {}
+                with open('org.json', 'w') as fp:
+                    json.dump(org, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"[好友名單已清空]")
 #=============================================
             elif msg.text in ["My grup"]:
                     gid = dz.getGroupIdsJoined()
@@ -1973,6 +2014,11 @@ def dhenzaBot(op):
             elif "Cname: " in msg.text:
                 x = dz.getProfile()
                 x.displayName = msg.text.replace("Cname: ","")
+                dz.updateProfile(x)
+                dz.sendMessage(msg.to, "ᴅᴏɴᴇ")
+            elif "換群名:" in msg.text:
+                x = dz.getProfile()
+                x.displayName = msg.text.replace("換群名:","")
                 dz.updateProfile(x)
                 dz.sendMessage(msg.to, "ᴅᴏɴᴇ")
 #=============================================
@@ -1998,6 +2044,11 @@ def dhenzaBot(op):
                 dz.sendMessage(msg.to,"自動禁群功能已關閉")
 #=============================================
             elif msg.text in ["Gift"]:
+                    giftnya={'MSGTPL': '5',
+                            'PRDTYPE': 'THEME',
+                            'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58'}           
+                    dz.sendMessage(msg.to,None, contentMetadata=giftnya, contentType=9)
+            elif msg.text in ["禮物"]:
                     giftnya={'MSGTPL': '5',
                             'PRDTYPE': 'THEME',
                             'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58'}           
@@ -2138,6 +2189,20 @@ def dhenzaBot(op):
                         s += 7
                         txt += u'@Zero \n'
                     dz.sendMessage(msg.to, text=txt, contentMetadata={u'MENTION': json.dumps({'MENTIONEES':b})}, contentType=0)
+
+            elif msg.text in ["點名"]:
+                group = dz.getGroup(msg.to)
+                nama = [contact.mid for contact in group.members]
+                k = len(nama)//20
+                for a in range(k+1):
+                    txt = u''
+                    s=0
+                    b=[]
+                    for i in group.members[a*20 : (a+1)*20]:
+                        b.append({"S":str(s), "E" :str(s+6), "M":i.mid})
+                        s += 7
+                        txt += u'@Zero \n'
+                    dz.sendMessage(msg.to, text=txt, contentMetadata={u'MENTION': json.dumps({'MENTIONEES':b})}, contentType=0)
                     
             elif msg.text in ["Cek"]:
                     dz.sendMessage(msg.to, ".")
@@ -2217,6 +2282,26 @@ def dhenzaBot(op):
                         time.sleep(0.2)
                         dz.cancelGroupInvitation(msg.to, [x])
                     dz.sendMessage(msg.to, "Berhasil sikat smua pendingan")
+            elif msg.text in ["取消邀請"]:
+                group = dz.getGroup(msg.to)
+                if group.invitee is None:
+                    dz.sendMessage(op.message.to, "[待邀區沒有人]")
+                else:
+                    nama = [contact.mid for contact in group.invitee]
+                    for x in nama:
+                        time.sleep(0.2)
+                        dz.cancelGroupInvitation(msg.to, [x])
+                    dz.sendMessage(msg.to, "[已成功清除待邀區人員]")
+            elif msg.text in ["清除邀請"]:
+                group = dz.getGroup(msg.to)
+                if group.invitee is None:
+                    dz.sendMessage(op.message.to, "[待邀區沒有人]")
+                else:
+                    nama = [contact.mid for contact in group.invitee]
+                    for x in nama:
+                        time.sleep(0.2)
+                        dz.cancelGroupInvitation(msg.to, [x])
+                    dz.sendMessage(msg.to, "[已成功清除待邀區人員]")
 #=============================================
             elif msg.text in ["Invite"]:
                     wait["Invi"] = True
@@ -2229,6 +2314,15 @@ def dhenzaBot(op):
                 for ids in group:
                     msgs+="\n╠ ➽ %s" % (ids.displayName)
                 msgs+="\n╚══════════════\n╠⟦ᴛᴏᴛᴀʟ ᴍᴇᴍʙᴇʀs : %i ⟧\n" % len(group)+"╚══════════════"
+                dz.sendMessage(msg.to, msgs)
+		
+            elif msg.text in ["成員名單"]:   
+                kontak = dz.getGroup(msg.to)
+                group = kontak.members
+                msgs="╔══════════════\n╠⟦ 成員名單 ⟧\n╔══════════════"
+                for ids in group:
+                    msgs+="\n╠ ➽ %s" % (ids.displayName)
+                msgs+="\n╚══════════════\n╠⟦ 以上所有人員 : %i ⟧\n" % len(group)+"╚══════════════"
                 dz.sendMessage(msg.to, msgs)
 
             elif "Cteks comment: " in msg.text:
@@ -2267,11 +2361,16 @@ def dhenzaBot(op):
             elif msg.text in ["Left teks"]:
                 dz.sendMessage(msg.to,"ᴍsɢ ᴛᴇxᴛ: \n\n" + Dhenza["leftmsg"])
 #=============================================
-            elif "Cteks wellcome: " in msg.text:
-                Dhenza["welmsg"] = msg.text.replace("Cteks wellcome: ","")
+            elif "Cteks welcome: " in msg.text:
+                Dhenza["welmsg"] = msg.text.replace("Cteks welcome: ","")
                 with open('teks.json', 'w') as fp:
                     json.dump(Dhenza, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴄʜᴀɴɢᴇ sᴜᴄᴄᴇs")   
+            elif "改歡迎詞:" in msg.text:
+                Dhenza["welmsg"] = msg.text.replace("改歡迎詞:","")
+                with open('teks.json', 'w') as fp:
+                    json.dump(Dhenza, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"⟦歡迎詞已變更⟧")   
             elif msg.text in ["Wellcome teks"]:
                 dz.sendMessage(msg.to,"ᴍsɢ ᴛᴇxᴛ: \n\n" + Dhenza["welmsg"])   
 #=============================================
