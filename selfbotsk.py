@@ -442,8 +442,9 @@ def dhenzaBot(op):
                     else:
                         ginfo = dz.getGroup(op.param1)
                         dzx = dz.getContact(op.param2)
-                        dz.sendMessage(op.param1, "Hello " + str(dzx.MentionName) + "\nWellcome to " + str(ginfo.name) +"\n"+ Dhenza["welmsg"])
+                        dz.sendMessage(op.param1, "Hello " + str(dzx.displayName) + "\nWellcome to " + str(ginfo.name) +"\n"+ Dhenza["welmsg"])
                         dz.sendImageWithURL(op.param1,"http://dl.profile.line-cdn.net/" + ydx.pictureStatus)
+			dz.getContact(key1)
                 else:
                     ginfo = dz.getGroup(op.param1)
                     dzx = dz.getContact(op.param2)
