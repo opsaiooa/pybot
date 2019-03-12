@@ -810,6 +810,13 @@ def dhenzaBot(op):
                     dz.updateGroup(X)
                     dz.sendMessage(msg.to,"sᴜᴄᴄᴇs ᴄʜᴀɴɢᴇ ᴛᴏ:\n\n"+X.name)
                     
+            elif "換群名:" in msg.text:
+                if msg.toType == 2:
+                    X = dz.getGroup(msg.to)
+                    X.name = msg.text.replace("換群名:","")
+                    dz.updateGroup(X)
+                    dz.sendMessage(msg.to,"sᴜᴄᴄᴇs ᴄʜᴀɴɢᴇ ᴛᴏ:\n\n"+X.name)
+                    
             elif msg.text in ["Reject"]:
               if msg.toType == 2:
                 gid = dz.getGroupIdsInvited()
@@ -839,7 +846,7 @@ def dhenzaBot(op):
                 dz.sendMessage(msg.to,"⟦ʙʀᴏᴀᴅᴄᴀsᴛ sᴜᴄᴄᴇs⟧")
             elif "Lirik: " in msg.text:
                 try:
-                    songname = msg.text.replace('Lirik: ','')
+                    songname = msg.text.replace("Lirik: ","")
                     params = {'songname': songname}
                     r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
                     data = r.text
@@ -852,7 +859,7 @@ def dhenzaBot(op):
                         dz.sendMessage(msg.to, hasil)
                 except Exception as wak:
                         dz.sendMessage(msg.to, str(wak))
-            elif "Image: " in msg.text:
+            elif "Image:" in msg.text:
                 try:
                     query = msg.text.replace("Image:", "")
                     images = dz.image_search(query)
@@ -936,6 +943,11 @@ def dhenzaBot(op):
                     dz.sendMessage(msg.to,"⟦ʙɪᴏ ᴇᴍᴘᴛʏ⟧")
 
             elif "Grup pict" in msg.text:
+                    group = dz.getGroup(msg.to)
+                    path = "http://dl.profile.line-cdn.net/" + group.pictureStatus
+                    dz.sendImageWithURL(msg.to,path)
+
+            elif "群圖" in msg.text:
                     group = dz.getGroup(msg.to)
                     path = "http://dl.profile.line-cdn.net/" + group.pictureStatus
                     dz.sendImageWithURL(msg.to,path)
@@ -1776,6 +1788,12 @@ def dhenzaBot(op):
                 if pro["bymsg"] == True: md+="╠➣ʙʏᴇ ᴍsɢ ᴛᴇᴋs : ✔\n╠════════════════════\n╠➣line://ti/p/糉子\n╠➣line://ti/p/糉子\n╚════════════════════"
                 else:md+="╠➣ʙʏᴇ ᴍsɢ ᴛᴇᴋs : ❌\n╠════════════════════\n╠➣line://ti/p/糉子\n╠➣line://ti/p/糉子\n╚════════════════════"
                 dz.sendMessage(msg.to,md)
+            elif msg.text in ["幫我"]:
+                md = "###〘中文指令〙###\n\n1.我\n2.踢 @\n3.自動進群 開\n4.自動進群 關\n5.影片: \n\n6.開群者\n7.群圖\n8.群網址\n9.網址 開\nA.網址 關\nB.取消邀請\nC.點名\nD.成員名單\nE.換群名: \n\nF.日曆(台灣時間)\nG.時刻(日本時間)\n\nH.加好友\nI.刪好友\nJ.清除好友\n\nK.保護指令\n"
+                dz.sendMessage(msg.to,md)
+            elif msg.text in ["保護指令"]:
+                md = "###〘保護指令〙###\n\n1.鎖邀請\n2.解鎖邀請\n\n3.禁止取消\n4.取消解禁\n\n5.鎖進群\n6.解鎖進群\n\n7.全保護開\n8.全保護關"
+                dz.sendMessage(msg.to,md)
 #=============================================
             elif msg.text in ["Cek ginfo"]:
                 if msg.toType == 2:
@@ -1982,6 +2000,36 @@ def dhenzaBot(op):
                     pass
                     jo = "\n╠ ➽ ".join(str(i) for i in nban)
                     dz.sendMessage(msg.to,"╔══════════════\n╠⟦ ᴛʙp ʟɪsᴛ ⟧\n╔══════════════\n╠ ➽ %s\n╚══════════════\n╠⟦ Total: %s ⟧\n"%(jo,str(len(cban)))+"╚══════════════")
+
+###標註加好友
+            elif "Friend @" in msg.text:
+                if 'MENTION' in msg.contentMetadata.keys() != None:
+                    names = re.findall(r'@(\w+)', msg.text)
+                    mention = ast.literal_eval(msg.contentMetadata['MENTION'])
+                    mentionees = mention['MENTIONEES']
+                    for mention in mentionees:
+                        if mention['M'] in org["Friend "]:
+                            dz.sendMessage(msg.to,"Already save")
+                        else:
+                            org["afriend "][mention['M']] = True
+                            with open('setting.json', 'w') as fp:
+                                json.dump(wait, fp, sort_keys=True, indent=4)
+                            dz.sendMessage(msg.to,"Friend added")
+###標註刪好友
+            elif "Unfriend @" in msg.text:
+                if 'MENTION' in msg.contentMetadata.keys() != None:
+                    names = re.findall(r'@(\w+)', msg.text)
+                    mention = ast.literal_eval(msg.contentMetadata['MENTION'])
+                    mentionees = mention['MENTIONEES']
+                    for mention in mentionees:
+                        if mention['M'] in org["dfriend "]:
+                            del org["dfriend"][mention['M']]
+                            with open('org.json', 'w') as fp:
+                                json.dump(org, fp, sort_keys=True, indent=4)
+                            dz.sendMessage(msg.to,"Empty target")
+                        else:
+                            dz.sendMessage(msg.to,"Friend Deleted")
+
             elif msg.text in ["Add friend"]:
                     wait["afriend"]=True
                     dz.sendMessage(msg.to, "sᴇɴᴅ ᴄᴏɴᴛᴀᴄᴛ")
@@ -2034,11 +2082,6 @@ def dhenzaBot(op):
             elif "Cname: " in msg.text:
                 x = dz.getProfile()
                 x.displayName = msg.text.replace("Cname: ","")
-                dz.updateProfile(x)
-                dz.sendMessage(msg.to, "ᴅᴏɴᴇ")
-            elif "換群名:" in msg.text:
-                x = dz.getProfile()
-                x.displayName = msg.text.replace("換群名:","")
                 dz.updateProfile(x)
                 dz.sendMessage(msg.to, "ᴅᴏɴᴇ")
 #=============================================
@@ -2305,23 +2348,23 @@ def dhenzaBot(op):
             elif msg.text in ["取消邀請"]:
                 group = dz.getGroup(msg.to)
                 if group.invitee is None:
-                    dz.sendMessage(op.message.to, "[待邀區沒有人]")
+                    dz.sendMessage(op.message.to, "⟦待邀區沒有人⟧")
                 else:
                     nama = [contact.mid for contact in group.invitee]
                     for x in nama:
                         time.sleep(0.2)
                         dz.cancelGroupInvitation(msg.to, [x])
-                    dz.sendMessage(msg.to, "[已成功清除待邀區人員]")
+                    dz.sendMessage(msg.to, "⟦已成功清除待邀區人員⟧")
             elif msg.text in ["清除邀請"]:
                 group = dz.getGroup(msg.to)
                 if group.invitee is None:
-                    dz.sendMessage(op.message.to, "[待邀區沒有人]")
+                    dz.sendMessage(op.message.to, "⟦待邀區沒有人⟧")
                 else:
                     nama = [contact.mid for contact in group.invitee]
                     for x in nama:
                         time.sleep(0.2)
                         dz.cancelGroupInvitation(msg.to, [x])
-                    dz.sendMessage(msg.to, "[已成功清除待邀區人員]")
+                    dz.sendMessage(msg.to, "⟦已成功清除待邀區人員⟧")
 #=============================================
             elif msg.text in ["Invite"]:
                     wait["Invi"] = True
