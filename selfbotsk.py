@@ -442,12 +442,12 @@ def dhenzaBot(op):
                     else:
                         ginfo = dz.getGroup(op.param1)
                         dzx = dz.getContact(op.param2)
-                        dz.sendMessage(op.param1, "Ehhh  " + str(dzx.displayName) + "\nWellcome to " + str(ginfo.name) +"\n"+ Dhenza["welmsg"])
+                        dz.sendMessage(op.param1, "Ehhh @" + str(dzx.displayName) + "\nWellcome to " + str(ginfo.name) +"\n"+ Dhenza["welmsg"])
                         dz.sendImageWithURL(op.param1,"http://dl.profile.line-cdn.net/" + ydx.pictureStatus)
                 else:
                     ginfo = dz.getGroup(op.param1)
                     dzx = dz.getContact(op.param2)
-                    dz.sendMessage(op.param1, "Ehhh  " + str(dzx.displayName) + "\nWellcome to " + str(ginfo.name) +"\n"+ Dhenza["welmsg"])
+                    dz.sendMessage(op.param1, "Ehhh @" + str(dzx.displayName) + "\nWellcome to " + str(ginfo.name) +"\n"+ Dhenza["welmsg"])
                     dz.sendImageWithURL(op.param1,"http://dl.profile.line-cdn.net/" + dzx.pictureStatus)                    
                     
 #==============[ PROTECT JOIN ]==============
@@ -2385,7 +2385,7 @@ def dhenzaBot(op):
                 msgs="╔══════════════\n╠⟦ 成員名單 ⟧\n╔══════════════"
                 for ids in group:
                     msgs+="\n╠ ➽ %s" % (ids.displayName)
-                msgs+="\n╚══════════════\n╠⟦ 以上所有人員 : %i ⟧\n" % len(group)+"╚══════════════"
+                msgs+="\n╚══════════════\n╠⟦ 總共 : %i 個成員⟧\n" % len(group)+"╚══════════════"
                 dz.sendMessage(msg.to, msgs)
 
             elif "Cteks comment: " in msg.text:
