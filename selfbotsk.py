@@ -227,8 +227,8 @@ Dhenza = {
     "comment":"╔═════════════════════\nAuto like by:TBP\n╚══════════════════════",
     "cctvteks":"Masuk sayang\nUdah keciduk juga",
     "message":"Hi @!\nᵀᴴᴬᴺᴷˢ ᶠᴼᴿ ᴬᴰᴰ ᴹᴱ",
-    "welmsg":"安呀! \n有人進來趕快出來打招呼",
-    "leftmsg":"唉呦~~\n有人跑回家烙賽.....臭臭的",
+    "welmsg":"歡迎進群 😊😊😊\n祝你玩群愉快 😅",
+    "leftmsg":"悄悄的離開，前往下一個樂園😘",
     "tagteks1":"Tag mau minta jajan ya",
     "tagteks2":"iya syang",
     "tagteks3":"kangen ya//-.."
@@ -442,12 +442,12 @@ def dhenzaBot(op):
                     else:
                         ginfo = dz.getGroup(op.param1)
                         dzx = dz.getContact(op.param2)
-                        dz.sendMessage(op.param1, "Ehhh " + @ str(dzx.displayName) + "\nWellcome to " + str(ginfo.name) +"\n"+ Dhenza["welmsg"])
+                        dz.sendMessage(op.param1, "Hello " + str(dzx.MentionName) + "\nWellcome to " + str(ginfo.name) +"\n"+ Dhenza["welmsg"])
                         dz.sendImageWithURL(op.param1,"http://dl.profile.line-cdn.net/" + ydx.pictureStatus)
                 else:
                     ginfo = dz.getGroup(op.param1)
                     dzx = dz.getContact(op.param2)
-                    dz.sendMessage(op.param1, "Ehhh " + @ str(dzx.displayName) + "\nWellcome to " + str(ginfo.name) +"\n"+ Dhenza["welmsg"])
+                    dz.sendMessage(op.param1, "Hi " + str(dzx.displayName) + "\nWellcome to " + str(ginfo.name) +"\n"+ Dhenza["welmsg"])
                     dz.sendImageWithURL(op.param1,"http://dl.profile.line-cdn.net/" + dzx.pictureStatus)                    
                     
 #==============[ PROTECT JOIN ]==============
