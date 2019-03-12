@@ -228,7 +228,7 @@ Dhenza = {
     "cctvteks":"Masuk sayang\nUdah keciduk juga",
     "message":"Hi @!\nᵀᴴᴬᴺᴷˢ ᶠᴼᴿ ᴬᴰᴰ ᴹᴱ",
     "welmsg":"安呀! \n有人進來趕快出來打招呼",
-    "leftmsg":"╔═════════════════════\nSILENT TΣΔM βΩT\n╚══════════════════════",
+    "leftmsg":"唉呦~~\n有人跑回家烙賽.....臭臭的",
     "tagteks1":"Tag mau minta jajan ya",
     "tagteks2":"iya syang",
     "tagteks3":"kangen ya//-.."
@@ -755,7 +755,7 @@ def dhenzaBot(op):
                 if msg.toType == 2:
                     x = dz.getGroup(msg.to)
                     if x.preventedJoinByTicket == True:
-                        dz.sendMessage(msg.to,"ǫʀ ɴʏᴀ ᴅɪ ᴀɴᴜ ᴅᴜʟᴜ ʙᴏss..")
+                        dz.sendMessage(msg.to,"⟦網址未開啟請下指令\n網址 開⟧")
                     elif x.preventedJoinByTicket == False:
                         dz.updateGroup(x)
                         gurl = dz.reissueGroupTicket(msg.to)
@@ -772,6 +772,16 @@ def dhenzaBot(op):
                     X.preventedJoinByTicket = False
                     dz.updateGroup(X)
                     dz.sendMessage(msg.to,"⟦Qʀ ᴏᴘᴇɴ⟧")
+                        
+            elif msg.text in ["網址 開"]:
+              if msg.toType == 2:
+                X = dz.getGroup(msg.to)
+                if X.preventedJoinByTicket == False:
+                    dz.sendMessage(msg.to,"⟦網址邀請已經是開啟狀態了⟧")
+                else:
+                    X.preventedJoinByTicket = False
+                    dz.updateGroup(X)
+                    dz.sendMessage(msg.to,"⟦已成功開啟網址邀請⟧")
                     
             elif msg.text in ["Curl"]:
               if msg.toType == 2:
@@ -782,6 +792,16 @@ def dhenzaBot(op):
                     X.preventedJoinByTicket = True
                     dz.updateGroup(X)
                     dz.sendMessage(msg.to,"⟦Qʀ ᴄʟᴏsᴇ⟧")
+                    
+            elif msg.text in ["網址 關"]:
+              if msg.toType == 2:
+                X = dz.getGroup(msg.to)
+                if X.preventedJoinByTicket == True:
+                    dz.sendMessage(msg.to,"⟦網址邀請已經是關閉狀態了⟧")
+                else:
+                    X.preventedJoinByTicket = True
+                    dz.updateGroup(X)
+                    dz.sendMessage(msg.to,"⟦已成功關閉網址邀請⟧")
                     
             elif "Gname: " in msg.text:
                 if msg.toType == 2:
