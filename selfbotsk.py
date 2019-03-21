@@ -1713,7 +1713,7 @@ def dhenzaBot(op):
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴀʟʟ sᴇᴛ ᴄʟᴇᴀʀ")
             elif msg.text in ["Set"]:
-                md = "╔════════════════════\n╠➣SILENT TΣΔM βΩT\n╠════════════════════\n"
+                md = "╔════════════════════\n╠➣ΖΟΝΓΖΙ βΩT\n╠════════════════════\n"
                 if msg.to in pro["intaPoint"]: md+="╠➣ᴀᴜᴛᴏ ɪɴ : ✔\n"
                 else: md +="╠➣ᴀᴜᴛᴏ ɪɴ : ❌\n"
 				
@@ -1747,7 +1747,7 @@ def dhenzaBot(op):
                     json.dump(wait, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴀʟʟ ᴀᴅᴅ ᴄʟᴇᴀʀ")
             elif msg.text in ["Add status"]:
-                md = "╔════════════════════\n╠SILENT TΣΔM βΩT\n╠════════════════════\n"
+                md = "╔════════════════════\n╠ΖΟΝΓΖΙ βΩT\n╠════════════════════\n"
                 if wait["Invi"] == True: md+="╠➣Invite : ✔\n"
                 else:md+="╠➣Invite : ❌\n"
                 if wait["atarget"] == True: md+="╠➣ᴀᴅᴅ ʙᴀɴɴᴇᴅ : ✔\n"
@@ -1766,7 +1766,7 @@ def dhenzaBot(op):
                 else:md+="╠➣ɢᴇᴛ ᴍɪᴅ : ❌\n╠════════════════════\n╠➣line://ti/p/~dhenz415\n╠➣line://ti/p/~teambotprotect\n╚════════════════════"
                 dz.sendMessage(msg.to,md)
             elif msg.text in ["Status"]:
-                md = "╔════════════════════\n╠SILENT TΣΔM βΩT\n╠════════════════════\n"
+                md = "╔════════════════════\n╠ΖΟΝΓΖΙ βΩT\n╠════════════════════\n"
                 if wait["Autojoin"] == True: md+="╠➣ᴀᴜᴛᴏᴊᴏɪɴ : ✔\n"
                 else:md+="╠➣ᴀᴜᴛᴏᴊᴏɪɴ : ❌\n"
                 if resp["Tag1"] == True: md+="╠➣ ᴍᴇɴᴛɪᴏɴ1 : ✔\n"
@@ -1789,7 +1789,7 @@ def dhenzaBot(op):
                 else:md+="╠➣ʙʏᴇ ᴍsɢ ᴛᴇᴋs : ❌\n╠════════════════════\n╠➣line://ti/p/糉子\n╠➣line://ti/p/糉子\n╚════════════════════"
                 dz.sendMessage(msg.to,md)
             elif msg.text in ["幫我"]:
-                md = "###〘中文指令〙###\n\n1.我\n2.踢 @\n3.自動進群 開\n4.自動進群 關\n5.影片: \n\n6.開群者\n7.群圖\n8.群網址\n9.網址 開\nA.網址 關\nB.取消邀請\nC.點名\nD.成員名單\nE.換群名: \n\nF.日曆(台灣時間)\nG.時刻(日本時間)\n\nH.加好友\nI.刪好友\nJ.清除好友\n\nK.保護指令\n"
+                md = "###〘中文指令〙###\n\n1.我\n2.踢 @\n3.自動進群 開\n4.自動進群 關\n5.影音: \n\n6.開群者\n7.Ginfo\n8.群圖\n9.群網址\nA.網址 開\nB.網址 關\nC.取消邀請\nD.點名\nE.成員名單\nF.換群名:\n G.日曆(台灣時間)\nH.時刻(日本時間)\n\nI.加好友\nJ.刪好友\nK.清除好友\n\nL.保護指令\n"
                 dz.sendMessage(msg.to,md)
             elif msg.text in ["保護指令"]:
                 md = "###〘保護指令〙###\n\n1.鎖邀請\n2.解鎖邀請\n\n3.禁止取消\n4.取消解禁\n\n5.鎖進群\n6.解鎖進群\n\n7.全保護開\n8.全保護關"
