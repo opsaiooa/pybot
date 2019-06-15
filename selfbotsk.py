@@ -1534,22 +1534,42 @@ def dhenzaBot(op):
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to, "ᴏᴜᴛ ᴍᴇssᴀɢᴇ ᴀᴄᴛɪᴠᴇ")
+            elif msg.text in ["退群通知 開"]:
+                pro["bymsg"]=True
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to, "⟦退群通知已啟動⟧")
             elif msg.text in ["Left off"]:
                 pro["bymsg"]=False
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to, "ᴏᴜᴛ ᴍᴇssᴀɢᴇ ɴᴏᴛ ᴀᴄᴛɪᴠᴇ")
+            elif msg.text in ["退群通知 關"]:
+                pro["bymsg"]=False
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to, "⟦退群通知已關閉⟧")
 #=================================================
             elif msg.text in ["Welcome on"]:
                 pro["wellcome"]=True
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to, "ᴡᴇʟʟᴄᴏᴍᴇ ᴍsɢ ᴀᴄᴛɪᴠᴇ")
+            elif msg.text in ["歡迎 開"]:
+                pro["wellcome"]=True
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to, "⟦歡迎進群自動回覆已啟動⟧")
             elif msg.text in ["Welcome off"]:
                 pro["wellcome"]= False
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to, "ᴡᴇʟʟᴄᴏᴍᴇ ᴍsɢ ɴᴏᴛ ᴀᴄᴛɪᴠᴇ")
+            elif msg.text in ["歡迎 關"]:
+                pro["wellcome"]= False
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to, "⟦歡迎進群自動回覆已關閉⟧")
 #=================================================
             elif msg.text in ["Autokick on"]:
                 pro["Autokick"][msg.to]=True
@@ -1659,24 +1679,43 @@ def dhenzaBot(op):
                     with open('resp.json', 'w') as fp:
                         json.dump(resp, fp, sort_keys=True, indent=4)
                     dz.sendMessage(msg.to, "ᴀᴜᴛᴏ ʀᴇsᴘᴏɴsᴇ ᴀᴄᴛɪᴠᴇ")
+            elif msg.text in ["標註1 開"]:
+                    resp["Tag1"]=True
+                    resp["Tag2"]=True
+                    with open('resp.json', 'w') as fp:
+                        json.dump(resp, fp, sort_keys=True, indent=4)
+                    dz.sendMessage(msg.to, "⟦標註1自動回覆已啟動⟧")
             elif msg.text in ["Tag1 off"]:
                     resp["Tag1"]=False
                     with open('resp.json', 'w') as fp:
                         json.dump(resp, fp, sort_keys=True, indent=4)
                     dz.sendMessage(msg.to, "ᴀᴜᴛᴏ ʀᴇsᴘᴏɴsᴇ ɴᴏᴛ ᴀᴄᴛɪᴠᴇ")
+            elif msg.text in ["標註1 關"]:
+                    resp["Tag1"]=False
+                    with open('resp.json', 'w') as fp:
+                        json.dump(resp, fp, sort_keys=True, indent=4)
+                    dz.sendMessage(msg.to, "⟦標註1自動回覆已關閉⟧")
 #=============================================
             elif msg.text in ["Tag2 on"]:
-                    resp["Tag1"]=True
                     resp["Tag2"]=True
-
                     with open('resp.json', 'w') as fp:
                         json.dump(resp, fp, sort_keys=True, indent=4)
                     dz.sendMessage(msg.to, "ᴀᴜᴛᴏ ʀᴇsᴘᴏɴsᴇ ᴀᴄᴛɪᴠᴇ")
+            elif msg.text in ["標註2 開"]:
+                    resp["Tag2"]=True
+                    with open('resp.json', 'w') as fp:
+                        json.dump(resp, fp, sort_keys=True, indent=4)
+                    dz.sendMessage(msg.to, "⟦標註2自動回覆已啟動⟧")
             elif msg.text in ["Tag2 off"]:
                     resp["Tag2"]=False
                     with open('resp.json', 'w') as fp:
                         json.dump(resp, fp, sort_keys=True, indent=4)
                     dz.sendMessage(msg.to, "ᴀᴜᴛᴏ ʀᴇsᴘᴏɴsᴇ ɴᴏᴛ ᴀᴄᴛɪᴠᴇ")
+            elif msg.text in ["標註2 關"]:
+                    resp["Tag2"]=False
+                    with open('resp.json', 'w') as fp:
+                        json.dump(resp, fp, sort_keys=True, indent=4)
+                    dz.sendMessage(msg.to, "⟦標註2自動回覆已關閉⟧")
 #=============================================
             elif msg.text in ["Reset"]:
                 if msg.to in pro["Protectgr"]:
@@ -2000,35 +2039,6 @@ def dhenzaBot(op):
                     pass
                     jo = "\n╠ ➽ ".join(str(i) for i in nban)
                     dz.sendMessage(msg.to,"╔══════════════\n╠⟦ ᴛʙp ʟɪsᴛ ⟧\n╔══════════════\n╠ ➽ %s\n╚══════════════\n╠⟦ Total: %s ⟧\n"%(jo,str(len(cban)))+"╚══════════════")
-
-###標註加好友
-            elif "Friend @" in msg.text:
-                if 'MENTION' in msg.contentMetadata.keys() != None:
-                    names = re.findall(r'@(\w+)', msg.text)
-                    mention = ast.literal_eval(msg.contentMetadata['MENTION'])
-                    mentionees = mention['MENTIONEES']
-                    for mention in mentionees:
-                        if mention['M'] in org["Friend "]:
-                            dz.sendMessage(msg.to,"Already save")
-                        else:
-                            org["afriend "][mention['M']] = True
-                            with open('setting.json', 'w') as fp:
-                                json.dump(wait, fp, sort_keys=True, indent=4)
-                            dz.sendMessage(msg.to,"Friend added")
-###標註刪好友
-            elif "Unfriend @" in msg.text:
-                if 'MENTION' in msg.contentMetadata.keys() != None:
-                    names = re.findall(r'@(\w+)', msg.text)
-                    mention = ast.literal_eval(msg.contentMetadata['MENTION'])
-                    mentionees = mention['MENTIONEES']
-                    for mention in mentionees:
-                        if mention['M'] in org["dfriend "]:
-                            del org["dfriend"][mention['M']]
-                            with open('org.json', 'w') as fp:
-                                json.dump(org, fp, sort_keys=True, indent=4)
-                            dz.sendMessage(msg.to,"Empty target")
-                        else:
-                            dz.sendMessage(msg.to,"Friend Deleted")
 
             elif msg.text in ["Add friend"]:
                     wait["afriend"]=True
