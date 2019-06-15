@@ -824,6 +824,13 @@ def dhenzaBot(op):
                     dz.rejectGroupInvitation(i)
                 dz.sendMessage(msg.to,"done reject")
 
+            elif msg.text in ["拒絕邀請"]:
+              if msg.toType == 2:
+                gid = dz.getGroupIdsInvited()
+                for i in gid:
+                    dz.rejectGroupInvitation(i)
+                dz.sendMessage(msg.to,"⟦群組邀請已清空⟧")
+
             elif "Bcmember: " in msg.text:
                 xres = msg.text.replace("Bcmember: ","")
                 group = dz.getGroup(msg.to)
