@@ -2479,8 +2479,8 @@ def dhenzaBot(op):
                 with open('teks.json', 'w') as fp:
                     json.dump(Dhenza, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴄʜᴀɴɢᴇ sᴜᴄᴄᴇs")   
-            elif "改退群詞:" in msg.text:
-                Dhenza["leftmsg"] = msg.text.replace("改退群詞:","")
+            elif "改退群詞: " in msg.text:
+                Dhenza["leftmsg"] = msg.text.replace("改退群詞: ","")
                 with open('teks.json', 'w') as fp:
                     json.dump(Dhenza, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"⟦退群詞已變更⟧")   
@@ -2492,12 +2492,12 @@ def dhenzaBot(op):
                 with open('teks.json', 'w') as fp:
                     json.dump(Dhenza, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴄʜᴀɴɢᴇ sᴜᴄᴄᴇs")   
-            elif "改歡迎詞:" in msg.text:
-                Dhenza["welmsg"] = msg.text.replace("改歡迎詞:","")
+            elif "改歡迎詞: " in msg.text:
+                Dhenza["welmsg"] = msg.text.replace("改歡迎詞: ","")
                 with open('teks.json', 'w') as fp:
                     json.dump(Dhenza, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"⟦歡迎詞已變更⟧")   
-            elif msg.text in ["Wellcome teks"]:
+            elif msg.text in ["Welcome teks"]:
                 dz.sendMessage(msg.to,"ᴍsɢ ᴛᴇxᴛ: \n\n" + Dhenza["welmsg"])   
 #=============================================
             elif "Cteks add: " in msg.text:
