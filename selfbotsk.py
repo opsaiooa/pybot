@@ -2107,7 +2107,7 @@ def dhenzaBot(op):
                         nban.append(cban[x].displayName)
                     pass
                     jo = "\n╠ ➽ ".join(str(i) for i in nban)
-                    dz.sendMessage(msg.to,"╔══════════════\n╠⟦ 好友列表 ⟧\n╔══════════════\n╠ ➽ %s\n╚══════════════\n╠⟦ 總共: %s ⟧\n"%(jo,str(len(cban)))+"╚══════════════")
+                    dz.sendMessage(msg.to,"╔══════════════\n╠⟦ 好友列表 ⟧\n╔══════════════\n╠ ➽ %s\n╚══════════════\n╠⟦ 總共: %s人 ⟧\n"%(jo,str(len(cban)))+"╚══════════════")
             elif msg.text in ["Clear friend"]:
                 org['Friend'] = {}
                 with open('org.json', 'w') as fp:
