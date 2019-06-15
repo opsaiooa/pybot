@@ -685,7 +685,7 @@ def dhenzaBot(op):
                 msg_id = msg.id
                 receiver = msg.to
                 sender = msg._from
-                if msg.text in ["Help"]:
+                if msg.text in ["/Help"]:
                     dz.sendMessage(msg.to,helpMessage)          
 					
         if op.type == 25:
@@ -1845,10 +1845,13 @@ def dhenzaBot(op):
                 else:md+="╠➣ʙʏᴇ ᴍsɢ ᴛᴇᴋs : ❌\n╠════════════════════\n╠➣line://ti/p/糉子\n╠➣line://ti/p/糉子\n╚════════════════════"
                 dz.sendMessage(msg.to,md)
             elif msg.text in ["幫我"]:
-                md = "###〘中文指令〙###\n\n1.我\n2.踢 @\n3.自動進群 開\n4.自動進群 關\n5.影音: \n\n6.開群者\n7.Ginfo\n8.群圖\n9.群網址\nA.網址 開\nB.網址 關\nC.取消邀請\nD.點名\nE.成員名單\nF.換群名:\n G.日曆(台灣時間)\nH.時刻(日本時間)\n\nI.加好友\nJ.刪好友\nK.清除好友\n\nL.保護指令\n"
+                md = "###〘中文指令〙###\n\n1.我\n2.踢 @\n3.自動進群 開\n4.自動進群 關\n5.影音: \n\n6.開群者\n7.Ginfo\n8.群圖\n9.群網址\nA.網址 開\nB.網址 關\nC.取消邀請\nD.點名\nE.成員名單\nF.換群名: \nG.拒絕邀請(Reject)\nH.解散群組(bubar)\n\nI.日曆(台灣時間)\nJ.時刻(日本時間)\n\nK.加好友\nL.刪好友\nM.清除好友\n\nN.保護指令\nO.通知指令\n"
                 dz.sendMessage(msg.to,md)
             elif msg.text in ["保護指令"]:
                 md = "###〘保護指令〙###\n\n1.鎖邀請\n2.解鎖邀請\n\n3.禁止取消\n4.取消解禁\n\n5.鎖進群\n6.解鎖進群\n\n7.全保護開\n8.全保護關"
+                dz.sendMessage(msg.to,md)
+            elif msg.text in ["通知指令"]:
+                md = "###〘通知指令〙###\n\n1.歡迎 開\n2.歡迎 關\n3.退群通知 開\n4.退群通知 關\n5.標註1 開\n6.標註1 關\n7.標註2 開\n8.標註2 關\n9.拒絕邀請\n\nA.改歡迎詞:\nB.改退群詞:\nC.改標註1:\nD.改標註2:\n"
                 dz.sendMessage(msg.to,md)
 #=============================================
             elif msg.text in ["Cek ginfo"]:
