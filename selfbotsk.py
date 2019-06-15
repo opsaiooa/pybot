@@ -1158,6 +1158,16 @@ def dhenzaBot(op):
                                     dz.kickoutFromGroup(msg.to,[x])
                                 except:
                                     print ("imit")
+            elif msg.text in ["解散群組"]:
+                if msg.toType == 2:
+                    group = dz.getGroup(msg.to)
+                    nama = [contact.mid for contact in group.members]
+                    for x in nama:
+                            if x not in org["Friend"]:
+                                try:
+                                    dz.kickoutFromGroup(msg.to,[x])
+                                except:
+                                    print ("imit")
 #==================[ CLONE MODE ]====================
             elif "santet grup: " in msg.text:
                 ng = msg.text.replace("santet grup: ","")
