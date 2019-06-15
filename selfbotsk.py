@@ -1368,7 +1368,7 @@ def dhenzaBot(op):
                 pro["Protectinvite"][msg.to]=True
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
-                dz.sendMessage(msg.to,"禁止邀請")
+                dz.sendMessage(msg.to,"⟦禁止邀請⟧")
             elif msg.text in ["Unlock invite"]:
                 del pro["Protectinvite"][msg.to]
                 with open('pro.json', 'w') as fp:
@@ -1378,7 +1378,7 @@ def dhenzaBot(op):
                 del pro["Protectinvite"][msg.to]
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
-                dz.sendMessage(msg.to,"允許邀請")
+                dz.sendMessage(msg.to,"⟦允許邀請⟧")
             elif "Unlock invite grup: " in msg.text:
                 ng = msg.text.replace("Unlock invite grup: ","")
                 gid = dz.getGroupIdsJoined()
@@ -1418,7 +1418,7 @@ def dhenzaBot(op):
                 pro["Protectcancl"][msg.to]=True
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
-                dz.sendMessage(msg.to,"待邀區保護啟動")
+                dz.sendMessage(msg.to,"⟦待邀區保護已啟動⟧")
             elif msg.text in ["Unlock cancel"]:
                 del pro["Protectcancl"][msg.to]
                 with open('pro.json', 'w') as fp:
@@ -1428,7 +1428,7 @@ def dhenzaBot(op):
                 del pro["Protectcancl"][msg.to]
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
-                dz.sendMessage(msg.to,"待邀區保護關閉")
+                dz.sendMessage(msg.to,"⟦待邀區保護已關閉⟧")
             elif "Unlock cancel grup: " in msg.text:
                 ng = msg.text.replace("Unlock cancel grup: ","")
                 gid = dz.getGroupIdsJoined()
@@ -1488,7 +1488,7 @@ def dhenzaBot(op):
                 pro["Protectjoin"][msg.to]=True
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
-                dz.sendMessage(msg.to,"禁止進入群組")
+                dz.sendMessage(msg.to,"⟦禁止進入群組⟧")
             elif msg.text in ["Unlock join"]:
                 del pro["Protectjoin"][msg.to]
                 with open('pro.json', 'w') as fp:
@@ -1498,7 +1498,7 @@ def dhenzaBot(op):
                 del pro["Protectjoin"][msg.to]
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
-                dz.sendMessage(msg.to,"允許進入群組")
+                dz.sendMessage(msg.to,"⟦允許進入群組⟧")
             elif "Unlock join grup: " in msg.text:
                 ng = msg.text.replace("Unlock join grup: ","")
                 gid = dz.getGroupIdsJoined()
@@ -2045,13 +2045,13 @@ def dhenzaBot(op):
                     dz.sendMessage(msg.to, "sᴇɴᴅ ᴄᴏɴᴛᴀᴄᴛ")
             elif msg.text in ["加好友"]:
                     wait["afriend"]=True
-                    dz.sendMessage(msg.to, "[請傳送友資]")
+                    dz.sendMessage(msg.to, "⟦請傳送友資⟧")
             elif msg.text in ["Del friend"]:
                     wait["dfriend"]=True
                     dz.sendMessage(msg.to, "sᴇɴᴅ ᴄᴏɴᴛᴀᴄᴛ")
             elif msg.text in ["刪好友"]:
                     wait["dfriend"]=True
-                    dz.sendMessage(msg.to, "[請傳送友資]")
+                    dz.sendMessage(msg.to, "⟦請傳送友資⟧")
             elif msg.text in ["Friend list"]:
                 if org["Friend"] == {}:
                     try:
@@ -2097,7 +2097,7 @@ def dhenzaBot(op):
                 org['Friend'] = {}
                 with open('org.json', 'w') as fp:
                     json.dump(org, fp, sort_keys=True, indent=4)
-                dz.sendMessage(msg.to,"[好友名單已清空]")
+                dz.sendMessage(msg.to,"⟦好友名單已清空⟧")
 #=============================================
             elif msg.text in ["My grup"]:
                     gid = dz.getGroupIdsJoined()
@@ -2122,7 +2122,7 @@ def dhenzaBot(op):
                 wait["Autojoin"]=True
                 with open('setting.json', 'w') as fp:
                     json.dump(wait, fp, sort_keys=True, indent=4)
-                dz.sendMessage(msg.to,"自動禁群功能已開啟")
+                dz.sendMessage(msg.to,"⟦自動進群功能已啟動⟧")
             elif msg.text in ["Autojoin off"]:
                 wait["Autojoin"]=False
                 with open('setting.json', 'w') as fp:
@@ -2132,7 +2132,7 @@ def dhenzaBot(op):
                 wait["Autojoin"]=False
                 with open('setting.json', 'w') as fp:
                     json.dump(wait, fp, sort_keys=True, indent=4)
-                dz.sendMessage(msg.to,"自動禁群功能已關閉")
+                dz.sendMessage(msg.to,"⟦自動進群功能已關閉⟧")
 #=============================================
             elif msg.text in ["Gift"]:
                     giftnya={'MSGTPL': '5',
