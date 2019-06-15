@@ -2060,6 +2060,24 @@ def dhenzaBot(op):
                     pass
                     jo = "\n╠ ➽ ".join(str(i) for i in nban)
                     dz.sendMessage(msg.to,"╔══════════════\n╠⟦ Friend List ⟧\n╔══════════════\n╠ ➽ %s\n╚══════════════\n╠⟦ Total: %s ⟧\n"%(jo,str(len(cban)))+"╚══════════════")
+            elif msg.text in ["好友名單"]:
+                if org["Friend"] == {}:
+                    try:
+                        dz.sendMessage(msg.to,"⟦ 未設定好友 ⟧")
+                    except:
+                        pass
+                else:
+                    mc = []
+                    for mi_d in org["Friend"]:
+                        mc.append(mi_d)
+                    pass
+                    cban = dz.getContacts(mc)
+                    nban = []
+                    for x in range(len(cban)):
+                        nban.append(cban[x].displayName)
+                    pass
+                    jo = "\n╠ ➽ ".join(str(i) for i in nban)
+                    dz.sendMessage(msg.to,"╔══════════════\n╠⟦ 好友列表 ⟧\n╔══════════════\n╠ ➽ %s\n╚══════════════\n╠⟦ 總共: %s ⟧\n"%(jo,str(len(cban)))+"╚══════════════")
             elif msg.text in ["Clear friend"]:
                 org['Friend'] = {}
                 with open('org.json', 'w') as fp:
@@ -2409,18 +2427,33 @@ def dhenzaBot(op):
                 with open('teks.json', 'w') as fp:
                     json.dump(Dhenza, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴄʜᴀɴɢᴇ sᴜᴄᴄᴇs")
+            elif "標註1:" in msg.text:
+                Dhenza["tagteks1"] = msg.text.replace("標註1:","")
+                with open('teks.json', 'w') as fp:
+                    json.dump(Dhenza, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"⟦標註2回覆已變更⟧")
 #=============================================
             elif "Cteks tag2: " in msg.text:
                 Dhenza["tagteks2"] = msg.text.replace("Cteks tag2: ","")
                 with open('teks.json', 'w') as fp:
                     json.dump(Dhenza, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴄʜᴀɴɢᴇ sᴜᴄᴄᴇs")
+            elif "標註2:" in msg.text:
+                Dhenza["tagteks2"] = msg.text.replace("標註2:","")
+                with open('teks.json', 'w') as fp:
+                    json.dump(Dhenza, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"⟦標註2回覆已變更⟧")
 #=============================================
             elif "Cteks left: " in msg.text:
                 Dhenza["leftmsg"] = msg.text.replace("Cteks left: ","")
                 with open('teks.json', 'w') as fp:
                     json.dump(Dhenza, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴄʜᴀɴɢᴇ sᴜᴄᴄᴇs")   
+            elif "改退群詞:" in msg.text:
+                Dhenza["leftmsg"] = msg.text.replace("改退群詞:","")
+                with open('teks.json', 'w') as fp:
+                    json.dump(Dhenza, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to,"⟦退群詞已變更⟧")   
             elif msg.text in ["Left teks"]:
                 dz.sendMessage(msg.to,"ᴍsɢ ᴛᴇxᴛ: \n\n" + Dhenza["leftmsg"])
 #=============================================
