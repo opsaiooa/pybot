@@ -2457,8 +2457,8 @@ def dhenzaBot(op):
                 with open('teks.json', 'w') as fp:
                     json.dump(Dhenza, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴄʜᴀɴɢᴇ sᴜᴄᴄᴇs")
-            elif "改標註1:" in msg.text:
-                Dhenza["tagteks1"] = msg.text.replace("改標註1:","")
+            elif "改標註1: " in msg.text:
+                Dhenza["tagteks1"] = msg.text.replace("改標註1: ","")
                 with open('teks.json', 'w') as fp:
                     json.dump(Dhenza, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"⟦標註1回覆已變更⟧")
@@ -2468,8 +2468,8 @@ def dhenzaBot(op):
                 with open('teks.json', 'w') as fp:
                     json.dump(Dhenza, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"ᴄʜᴀɴɢᴇ sᴜᴄᴄᴇs")
-            elif "改標註2:" in msg.text:
-                Dhenza["tagteks2"] = msg.text.replace("改標註2:","")
+            elif "改標註2: " in msg.text:
+                Dhenza["tagteks2"] = msg.text.replace("改標註2: ","")
                 with open('teks.json', 'w') as fp:
                     json.dump(Dhenza, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to,"⟦標註2回覆已變更⟧")
