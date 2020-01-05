@@ -3,7 +3,7 @@
     "restartBot": {},
     "userAgent": {},
     "keyCommand": "",
-    "autoAdd": true,
+    "autoAdd": false,
     "autoJoin": true,
     "autoReject": false,
     "autoLeave": false,
