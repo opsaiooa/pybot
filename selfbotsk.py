@@ -14,7 +14,8 @@ import time, random, multiprocessing, sys, json, codecs, threading, glob, re, st
 from gtts import gTTS
 from googletrans import Translator
 
-dz = LINE("")
+#dz = LINE("")
+dz = LINE("Email","PW")
 dz.log("Auth Token : " + str(dz.authToken))
 dz.log("Timeline Token : " + str(dz.tl.channelAccessToken))
 
@@ -713,16 +714,16 @@ def dhenzaBot(op):
                     else:
                         sinvitee = str(len(ginfo.invitee))
                     if ginfo.preventedJoinByTicket == True:
-                        u = "close"
+                        u = "關閉"
                     else:
-                        u = "open"
+                        u = "開啟"
                     try:
-                        dz.sendMessage(msg.to,"╔══════════════\n╠═༼≝₷₭ ɢʀᴜᴘ ɴᴀᴍᴇ ≝₷₭༽\n╠ ➽ " + str(ginfo.name) + "\n╠══════════════\n╠═ ༼≝₷₭  ɢʀᴜᴘ ᴄʀᴇᴀᴛᴏʀ ⟧≝₷₭༽\n╠ ➽ " + gCreator + "\n╠══════════════\n╠ ➽ ᴍᴇᴍʙᴇʀs: " + str(len(ginfo.members)) + " ᴍᴇᴍʙᴇʀs\n╠ ➽ ᴘᴇɴᴅɪɴɢ: " + sinvitee + " ᴘᴇᴏᴘʟᴇ\n╠ ➽ ᴜʀʟ : " + u + "\n╚══════════════")
-                        dz.sendMessage(msg.to,"「ɢɪᴅ:」 \n➽ " + msg.to)
+                        dz.sendMessage(msg.to,"╔══════════════\n╠═༼≝₷₭ 群組名稱 ≝₷₭༽\n╠ ➽ " + str(ginfo.name) + "\n╠══════════════\n╠═ ༼≝₷₭  開群者 ⟧≝₷₭༽\n╠ ➽ " + gCreator + "\n╠══════════════\n╠ ➽ 群組人數: " + str(len(ginfo.members)) + " 人\n╠ ➽ 邀請中: " + sinvitee + " 人\n╠ ➽ 網址狀態: " + u + "\n╚══════════════")
+                        dz.sendMessage(msg.to,"「群ɪᴅ:」 \n➽ " + msg.to)
                         dz.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/"+ ginfo.pictureStatus)
                     except:
-                        dz.sendMessage(msg.to,"╔══════════════\n╠═༼≝₷₭  ɢʀᴜᴘ ɴᴀᴍᴇ ≝₷₭༽\n╠ ➽ " + str(ginfo.name) + "\n╠══════════════\n╠═༼≝₷₭  ɢʀᴜᴘ ᴄʀᴇᴀᴛᴏʀ ≝₷₭༽\n╠ ➽ " + gCreator + "\n╚══════════════")
-                        dz.sendMessage(msg.to,"「ɢɪᴅ:」 \n➽ " + msg.to)
+                        dz.sendMessage(msg.to,"╔══════════════\n╠═༼≝₷₭  群組名稱 ≝₷₭༽\n╠ ➽ " + str(ginfo.name) + "\n╠══════════════\n╠═༼≝₷₭  開群者 ≝₷₭༽\n╠ ➽ " + gCreator + "\n╚══════════════")
+                        dz.sendMessage(msg.to,"「群ɪᴅ:」 \n➽ " + msg.to)
                         dz.sendImageWithURL(msg.to,"http://dl.profile.line-cdn.net/"+ ginfo.pictureStatus)
                         
             elif msg.text in ["Gcreator"]:
