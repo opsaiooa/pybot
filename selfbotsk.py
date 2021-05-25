@@ -227,11 +227,11 @@ pro = {
 Dhenza = {
     "comment":"╔═════════════════════\nAuto like by:TBP\n╚══════════════════════",
     "cctvteks":"Masuk sayang\nUdah keciduk juga",
-    "message":"Hi @\nᵀᴴᴬᴺᴷˢ ᶠᴼᴿ ᴬᴰᴰ ᴹᴱ",
+    "message":"Hi @\n怎麼會加我好友?",
     "welmsg":"歡迎進群 😊😊😊\n祝你玩群愉快 😅",
     "leftmsg":"悄悄的離開，前往下一個樂園😘",
-    "tagteks1":"Tag mau minta jajan ya",
-    "tagteks2":"iya syang",
+    "tagteks1":"嘿~ 我在",
+    "tagteks2":"嘿~ 我在",
     "tagteks3":"kangen ya//-.."
 	}
 
@@ -1552,7 +1552,7 @@ def dhenzaBot(op):
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to, "ᴏᴜᴛ ᴍᴇssᴀɢᴇ ᴀᴄᴛɪᴠᴇ")
-            elif msg.text in ["退群通知 開"]:
+            elif msg.text in ["退群 開"]:
                 pro["bymsg"]=True
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
@@ -1562,7 +1562,7 @@ def dhenzaBot(op):
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to, "ᴏᴜᴛ ᴍᴇssᴀɢᴇ ɴᴏᴛ ᴀᴄᴛɪᴠᴇ")
-            elif msg.text in ["退群通知 關"]:
+            elif msg.text in ["退群 關"]:
                 pro["bymsg"]=False
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
@@ -1852,7 +1852,7 @@ def dhenzaBot(op):
                 md = "###〘保護指令〙###\n\n1.鎖邀請\n2.解鎖邀請\n\n3.禁止取消\n4.取消解禁\n\n5.鎖進群\n6.解鎖進群\n\n7.全保護開\n8.全保護關"
                 dz.sendMessage(msg.to,md)
             elif msg.text in ["通知指令"]:
-                md = "###〘通知指令〙###\n\n1.歡迎 開\n2.歡迎 關\n3.退群通知 開\n4.退群通知 關\n5.標註1 開\n6.標註1 關\n7.標註2 開\n8.標註2 關\n9.拒絕邀請\n\nA.改歡迎詞:\nB.改退群詞:\nC.改標註1:\nD.改標註2:\n"
+                md = "###〘通知指令〙###\n\n1.歡迎 開\n2.歡迎 關\n3.退群 開\n4.退群 關\n5.標註1 開\n6.標註1 關\n7.標註2 開\n8.標註2 關\n9.拒絕邀請\n\nA.改歡迎詞:\nB.改退群詞:\nC.改標註1:\nD.改標註2:\n"
                 dz.sendMessage(msg.to,md)
 #=============================================
             elif msg.text in ["Cek ginfo"]:
