@@ -1552,12 +1552,22 @@ def dhenzaBot(op):
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to, "ᴏᴜᴛ ᴍᴇssᴀɢᴇ ᴀᴄᴛɪᴠᴇ")
+            elif msg.text in ["Leave on"]:
+                pro["bymsg"]=True
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to, "ᴏᴜᴛ ᴍᴇssᴀɢᴇ ᴀᴄᴛɪᴠᴇ")
             elif msg.text in ["退群 開"]:
                 pro["bymsg"]=True
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
                 dz.sendMessage(msg.to, "⟦退群通知已啟動⟧")
             elif msg.text in ["Left off"]:
+                pro["bymsg"]=False
+                with open('pro.json', 'w') as fp:
+                    json.dump(pro, fp, sort_keys=True, indent=4)
+                dz.sendMessage(msg.to, "ᴏᴜᴛ ᴍᴇssᴀɢᴇ ɴᴏᴛ ᴀᴄᴛɪᴠᴇ")
+            elif msg.text in ["Leave off"]:
                 pro["bymsg"]=False
                 with open('pro.json', 'w') as fp:
                     json.dump(pro, fp, sort_keys=True, indent=4)
